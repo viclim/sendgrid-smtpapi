@@ -1,0 +1,8 @@
+development: &default
+  :server: smtp.sendgrid.net
+  :port: 587
+  :username: apikey
+  :password: <%= ENV['SENDGRID_PASSWORD'] %>
+
+production:
+  <<: *default

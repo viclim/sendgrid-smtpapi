@@ -1,0 +1,32 @@
+<div style="margin-bottom: 22px;">
+  <%= link_to 'Compose', new_email_path, class: 'button is-link' %>
+</div>
+
+<table class="table is-striped is-hoverable is-fullwidth">
+  <thead>
+    <tr>
+      <th>Mail ID</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Subject</th>
+      <th>Content</th>
+      <th>Events</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emails.each do |email| %>
+      <tr>
+        <td><%= email.id %></td>
+        <td><%= email.from %></td>
+        <td><%= email.to %></td>
+        <td><%= email.subject %></td>
+        <td><%= email.content %></td>
+        <td><%= email.events.count %></td>
+        <td><%= link_to 'Show', email_path(email) %></td>
+        <td><%= link_to 'Resend', resend_email_path(email) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

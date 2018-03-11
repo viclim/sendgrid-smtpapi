@@ -1,0 +1,50 @@
+<%= link_to 'Back', emails_path, class: 'button is-link' %>
+
+<hr />
+
+<div class="columns is-multiline">
+  <div class="column is-half">
+    <strong>From:</strong> <%= @email.from %>
+  </div>
+  <div class="column is-half">
+    <strong>To:</strong> <%= @email.to %>
+  </div>
+  <div class="column is-12">
+    <strong>Subject:</strong> <%= @email.subject %>
+  </div>
+
+  <div class="column is-12">
+    <strong>Message:</strong>
+    <pre><%= @email.message %></pre>
+  </div>
+
+  <div id="events" class="column is-12">
+    <strong>Events:</strong>
+    <% if @email.events.empty? %>
+      No event yet.
+    <% else %>
+      <table class="table is-striped is-hoverable is-fullwidth">
+        <thead>
+          <th>Event</th>
+          <th>Mail ID</th>
+          <th>Payload</th>
+        </thead>
+        <tbody>
+          <% @email.events.each do |event| %>
+            <tr>
+              <td>
+                <%= event.payload['event'] %>
+              </td>
+              <td>
+                <%= event.payload['mail_id'] %>
+              </td>
+              <td>
+                <%= event.payload %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<%= form_with(model: email, local: true) do |form| %>
+  <% if email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(email.errors.count, "error") %> prohibited this email from being saved:</h2>
+
+      <ul>
+      <% email.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :from, class: 'label' %>
+    <div class="control">
+      <%= form.email_field :from, value: 'victor@martindale.com', class: 'input', required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :to, class: 'label' %>
+    <div class="control">
+      <%= form.email_field :to, class: 'input', required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :subject, class: 'label' %>
+    <div class="control">
+      <%= form.text_field :subject, class: 'input', required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :content, class: 'label' %>
+    <div class="control">
+      <%= form.text_area :content, class: 'textarea', required: true %>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= form.submit 'Send', class: 'button is-link' %>
+    </div>
+    <div class="control">
+      <%= link_to 'Cancel', root_path, class: 'button is-text' %>
+    </div>
+  </div>
+<% end %>
