@@ -39,12 +39,13 @@
                 <%= event.payload['mail_id'] %>
               </td>
               <td>
-                <%= event.payload %>
+                <%= event.payload.to_json %>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
     <% end %>
+    <script>subscribe(<%= @email.id %>);</script>
   </div>
 </div>
