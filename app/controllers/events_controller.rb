@@ -1,5 +1,10 @@
-class EventsController < ActionController::API
-  before_action :authenticate
+class EventsController < ActionController::Base
+  layout 'application'
+  before_action :authenticate, except: [:index]
+
+  def index
+    @events = Event.order(created_at: :desc)
+  end
 
   def create
     params['_json'].each do |json|
